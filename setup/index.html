@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Setup - Articulate</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Setup";
+    var mkdocs_page_input_path = "setup.md";
+    var mkdocs_page_url = "/setup/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Articulate</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Setup</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    
+
+    <li class="toctree-l2"><a href="#configuration">Configuration</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#mappers">Mappers</a></li>
+        
+            <li><a class="toctree-l3" href="#attributes">Attributes</a></li>
+        
+            <li><a class="toctree-l3" href="#sources">Sources</a></li>
+        
+            <li><a class="toctree-l3" href="#extras">Extras</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../entities/">Entities</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../mappers/">Mappers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../mappings/">Mappings</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../attributes/">Attributes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../repositories/">Repostiories</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../sources/">Sources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../components/">Components</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Articulate</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Setup</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="installation">Installation</h1>
+<p>Articulate is available as a composer package on <a href="https://packagist.org/packages/ollieread/articulate">Packagist</a>, you can install it using Composer.</p>
+<p>To install, simply require the package using composer.</p>
+<pre><code>composer require sprocketbox/articulate
+</code></pre>
+<p>Once the package is installed, publish the configuration using the following command.</p>
+<pre><code>php artisan vendor:publish --provider=Sprocketbox\Articulate\ServiceProvider
+</code></pre>
+<h1 id="configuration">Configuration</h1>
+<p>The Articulate configuration file will be created at <code>LARAVEL_BASE_DIR/config/articulate.php</code>.</p>
+<h2 id="mappers">Mappers</h2>
+<p>To register your mappers with Articulate, you just need to add a class reference to the <code>articulate.mapper</code> configuration array.</p>
+<pre><code>'mapper' =&gt; [
+    \App\Mappings\TestMapper::class,
+],
+</code></pre>
+<p>You can read more about mappers <a href="../mappers">here</a>.</p>
+<h2 id="attributes">Attributes</h2>
+<p>To change the default attribute availability, or add your own custom attributes, you need to add to the <code>articulate.attributes</code> 
+configuration array, in the format of <code>snake_case_ident =&gt; Attribute::class</code>. The entity mapping will convert this snake 
+case ident to camel case for usage in your mappings.</p>
+<pre><code>'attributes' =&gt; [
+    'bool'      =&gt; \Sprocketbox\Articulate\Attributes\BoolAttribute::class,
+    'entity'    =&gt; \Sprocketbox\Articulate\Attributes\EntityAttribute::class,
+    'int'       =&gt; \Sprocketbox\Articulate\Attributes\IntAttribute::class,
+    'json'      =&gt; \Sprocketbox\Articulate\Attributes\JsonAttribute::class,
+    'string'    =&gt; \Sprocketbox\Articulate\Attributes\StringAttribute::class,
+    'timestamp' =&gt; \Sprocketbox\Articulate\Attributes\TimestampAttribute::class,
+    'float'     =&gt; \Sprocketbox\Articulate\Attributes\FloatAttribute::class,
+    'text'      =&gt; \Sprocketbox\Articulate\Attributes\TextAttribute::class,
+    //'object_id'   =&gt; \Sprocketbox\Articulate\Attributes\MongoDB\ObjectIdColumn::class,
+    //'subdocument' =&gt; \Sprocketbox\Articulate\Attributes\MongoDB\SubdocumentColumn::class,
+    //'utc'         =&gt; \Sprocketbox\Articulate\Attributes\MongoDB\UtcColumn::class,
+],
+</code></pre>
+<p>There are 3 available MongoDB attributes that are commented out by default. To use them, simply uncomment.</p>
+<p>You can read more about attributes <a href="../attributes">here</a>.</p>
+<h2 id="sources">Sources</h2>
+<p>To register sources with articulate, you can modify the <code>articulate.sources</code> config option. All sources are listed in the
+format of <code>ident =&gt; sourceClass</code>. There are two sources present by default, though one is commented out as it relies
+on another package.</p>
+<pre><code>'sources' =&gt; [
+    'illuminate' =&gt; \Sprocketbox\Articulate\Sources\Illuminate\IlluminateSource::class,
+    //'respite'    =&gt; \Sprocketbox\Articulate\Sources\Respite\RespiteSource::class,
+],
+</code></pre>
+<p>You can read more about sources <a href="../sources">here</a>.</p>
+<h2 id="extras">Extras</h2>
+<p>Articulate ships with two additional pieces of functionality that you can enable or disable as you see fit.</p>
+<pre><code>'extra' =&gt; [
+    'auth'      =&gt; true,
+    'recursive' =&gt; false,
+],
+</code></pre>
+<h3 id="laravel-auth">Laravel Auth</h3>
+<p>Setting the <code>articulate.extra.auth</code> option to true will register the authentication driver for Articulate, allowing you
+to use entities with the default auth library.</p>
+<p>You can read more about auth <a href="../extras/#auth">here</a>.</p>
+<h3 id="illuminate-recursive-queries">Illuminate Recursive Queries</h3>
+<p>Setting the <code>articulate.extra.recursive</code> option to true will register a query builder mixin that allows you to perform recursive CTE queries.
+Currently this only works with MySQL.</p>
+<p>You can read more about recursive queries <a href="../extras/#recursive">here</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../entities/" class="btn btn-neutral float-right" title="Entities">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../entities/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
