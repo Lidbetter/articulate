@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "What is Articulate?\n\n\nArticulate is a data source agnostic entity mapper package for Laravel. It allows you to use simple data objects (entities) \nwithout having to deal with the nuances of an ORM, or worrying about where they came from.\n\n\nWhy Articulate?\n\n\nArticulate is designed to provide domain based entities that are separated from the data sources that populate them.\nAn entity can have as little or as much resemblance to its data source as you wish.\n\n\nYour business and application logic won't care whether the data came from a static file, an array, a database or even an API.\nAll it cares about is the resource returned from that source, and Articulate aims to help there by providing a level of\nabstraction.\n\n\nHow does Articulate work?\n\n\nEvery \nentity\n in Articulate has a \nmapper\n that provides a \nmapping\n between entity \nattributes\n\nand data source columns. Each entity also belongs to a data \nsource\n, dictating where the data should come from,\nand also have a \nrespository\n that is used to interact with said data source.", 
+            "text": "What is Articulate?\n\n\nArticulate is a data source agnostic entity mapper package for Laravel. It allows you to use simple data objects (entities) \nwithout having to deal with the nuances of an ORM, or worrying about where they came from.\n\n\nWhy Articulate?\n\n\nArticulate is designed to provide domain based entities that are separated from the data sources that populate them.\nAn entity can have as little or as much resemblance to its data source as you wish.\n\n\nYour business and application logic won't care whether the data came from a static file, an array, a database or even an API.\nAll it cares about is the resource returned from that source, and Articulate aims to help there by providing a level of\nabstraction.\n\n\nHow does Articulate work?\n\n\nEvery \nentity\n in Articulate has a \nmapper\n that provides a \n\nmapping\n between entity \nattributes\n\nand data source columns. Each entity also belongs to a data \nsource\n, dictating where the data should come from,\nand also have a \nrespository\n that is used to interact with said data source.", 
             "title": "Introduction"
         }, 
         {
@@ -21,119 +21,194 @@
             "title": "How does Articulate work?"
         }, 
         {
-            "location": "/setup/", 
+            "location": "/guides/setup/", 
             "text": "Installation\n\n\nArticulate is available as a composer package on \nPackagist\n, you can install it using Composer.\n\n\nTo install, simply require the package using composer.\n\n\ncomposer require sprocketbox/articulate\n\n\n\nOnce the package is installed, publish the configuration using the following command.\n\n\nphp artisan vendor:publish --provider=Sprocketbox\\Articulate\\ServiceProvider\n\n\n\nConfiguration\n\n\nThe Articulate configuration file will be created at \nLARAVEL_BASE_DIR/config/articulate.php\n.\n\n\nMappers\n\n\nTo register your mappers with Articulate, you just need to add a class reference to the \narticulate.mapper\n configuration array.\n\n\n'mapper' =\n [\n    \\App\\Mappings\\TestMapper::class,\n],\n\n\n\nYou can read more about mappers \nhere\n.\n\n\nAttributes\n\n\nTo change the default attribute availability, or add your own custom attributes, you need to add to the \narticulate.attributes\n \nconfiguration array, in the format of \nsnake_case_ident =\n Attribute::class\n. The entity mapping will convert this snake \ncase ident to camel case for usage in your mappings.\n\n\n'attributes' =\n [\n    'bool'      =\n \\Sprocketbox\\Articulate\\Attributes\\BoolAttribute::class,\n    'entity'    =\n \\Sprocketbox\\Articulate\\Attributes\\EntityAttribute::class,\n    'int'       =\n \\Sprocketbox\\Articulate\\Attributes\\IntAttribute::class,\n    'json'      =\n \\Sprocketbox\\Articulate\\Attributes\\JsonAttribute::class,\n    'string'    =\n \\Sprocketbox\\Articulate\\Attributes\\StringAttribute::class,\n    'timestamp' =\n \\Sprocketbox\\Articulate\\Attributes\\TimestampAttribute::class,\n    'float'     =\n \\Sprocketbox\\Articulate\\Attributes\\FloatAttribute::class,\n    'text'      =\n \\Sprocketbox\\Articulate\\Attributes\\TextAttribute::class,\n    //'object_id'   =\n \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\ObjectIdColumn::class,\n    //'subdocument' =\n \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\SubdocumentColumn::class,\n    //'utc'         =\n \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\UtcColumn::class,\n],\n\n\n\nThere are 3 available MongoDB attributes that are commented out by default. To use them, simply uncomment.\n\n\nYou can read more about attributes \nhere\n.\n\n\nSources\n\n\nTo register sources with articulate, you can modify the \narticulate.sources\n config option. All sources are listed in the\nformat of \nident =\n sourceClass\n. There are two sources present by default, though one is commented out as it relies\non another package.\n\n\n'sources' =\n [\n    'illuminate' =\n \\Sprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateSource::class,\n    //'respite'    =\n \\Sprocketbox\\Articulate\\Sources\\Respite\\RespiteSource::class,\n],\n\n\n\nYou can read more about sources \nhere\n.\n\n\nExtras\n\n\nArticulate ships with two additional pieces of functionality that you can enable or disable as you see fit.\n\n\n'extra' =\n [\n    'auth'      =\n true,\n    'recursive' =\n false,\n],\n\n\n\nLaravel Auth\n\n\nSetting the \narticulate.extra.auth\n option to true will register the authentication driver for Articulate, allowing you\nto use entities with the default auth library.\n\n\nYou can read more about auth \nhere\n.\n\n\nIlluminate Recursive Queries\n\n\nSetting the \narticulate.extra.recursive\n option to true will register a query builder mixin that allows you to perform recursive CTE queries.\nCurrently this only works with MySQL.\n\n\nYou can read more about recursive queries \nhere\n.", 
             "title": "Setup"
         }, 
         {
-            "location": "/setup/#installation", 
+            "location": "/guides/setup/#installation", 
             "text": "Articulate is available as a composer package on  Packagist , you can install it using Composer.  To install, simply require the package using composer.  composer require sprocketbox/articulate  Once the package is installed, publish the configuration using the following command.  php artisan vendor:publish --provider=Sprocketbox\\Articulate\\ServiceProvider", 
             "title": "Installation"
         }, 
         {
-            "location": "/setup/#configuration", 
+            "location": "/guides/setup/#configuration", 
             "text": "The Articulate configuration file will be created at  LARAVEL_BASE_DIR/config/articulate.php .", 
             "title": "Configuration"
         }, 
         {
-            "location": "/setup/#mappers", 
+            "location": "/guides/setup/#mappers", 
             "text": "To register your mappers with Articulate, you just need to add a class reference to the  articulate.mapper  configuration array.  'mapper' =  [\n    \\App\\Mappings\\TestMapper::class,\n],  You can read more about mappers  here .", 
             "title": "Mappers"
         }, 
         {
-            "location": "/setup/#attributes", 
+            "location": "/guides/setup/#attributes", 
             "text": "To change the default attribute availability, or add your own custom attributes, you need to add to the  articulate.attributes  \nconfiguration array, in the format of  snake_case_ident =  Attribute::class . The entity mapping will convert this snake \ncase ident to camel case for usage in your mappings.  'attributes' =  [\n    'bool'      =  \\Sprocketbox\\Articulate\\Attributes\\BoolAttribute::class,\n    'entity'    =  \\Sprocketbox\\Articulate\\Attributes\\EntityAttribute::class,\n    'int'       =  \\Sprocketbox\\Articulate\\Attributes\\IntAttribute::class,\n    'json'      =  \\Sprocketbox\\Articulate\\Attributes\\JsonAttribute::class,\n    'string'    =  \\Sprocketbox\\Articulate\\Attributes\\StringAttribute::class,\n    'timestamp' =  \\Sprocketbox\\Articulate\\Attributes\\TimestampAttribute::class,\n    'float'     =  \\Sprocketbox\\Articulate\\Attributes\\FloatAttribute::class,\n    'text'      =  \\Sprocketbox\\Articulate\\Attributes\\TextAttribute::class,\n    //'object_id'   =  \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\ObjectIdColumn::class,\n    //'subdocument' =  \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\SubdocumentColumn::class,\n    //'utc'         =  \\Sprocketbox\\Articulate\\Attributes\\MongoDB\\UtcColumn::class,\n],  There are 3 available MongoDB attributes that are commented out by default. To use them, simply uncomment.  You can read more about attributes  here .", 
             "title": "Attributes"
         }, 
         {
-            "location": "/setup/#sources", 
+            "location": "/guides/setup/#sources", 
             "text": "To register sources with articulate, you can modify the  articulate.sources  config option. All sources are listed in the\nformat of  ident =  sourceClass . There are two sources present by default, though one is commented out as it relies\non another package.  'sources' =  [\n    'illuminate' =  \\Sprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateSource::class,\n    //'respite'    =  \\Sprocketbox\\Articulate\\Sources\\Respite\\RespiteSource::class,\n],  You can read more about sources  here .", 
             "title": "Sources"
         }, 
         {
-            "location": "/setup/#extras", 
+            "location": "/guides/setup/#extras", 
             "text": "Articulate ships with two additional pieces of functionality that you can enable or disable as you see fit.  'extra' =  [\n    'auth'      =  true,\n    'recursive' =  false,\n],", 
             "title": "Extras"
         }, 
         {
-            "location": "/setup/#laravel-auth", 
+            "location": "/guides/setup/#laravel-auth", 
             "text": "Setting the  articulate.extra.auth  option to true will register the authentication driver for Articulate, allowing you\nto use entities with the default auth library.  You can read more about auth  here .", 
             "title": "Laravel Auth"
         }, 
         {
-            "location": "/setup/#illuminate-recursive-queries", 
+            "location": "/guides/setup/#illuminate-recursive-queries", 
             "text": "Setting the  articulate.extra.recursive  option to true will register a query builder mixin that allows you to perform recursive CTE queries.\nCurrently this only works with MySQL.  You can read more about recursive queries  here .", 
             "title": "Illuminate Recursive Queries"
         }, 
         {
-            "location": "/entities/", 
-            "text": "Entities could be considered Aritculates answer to models, but in essence, they're nothing more than simple data objects.\nEach entity represents a resource, and contains a particular part of a dataset.\n\n\nAll of Articulates entities extend the following class;\n\n\nSprocketbox\\Articulate\\Entities\\Entity\n\n\n\nThis class by default provides attribute handling, as well as a few magic methods so that your data can be accessed\nas entity properties. A fully functioning example entity would be as follows;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\nclass MyEntity extends Entity {\n}\n\n\n\n\nAll of the attributes are provided by the \nmapper\n and generated \nmapping\n so nothing more is needed.\nSince most IDEs have problems with magic properties, it is always worth adding a docblock to help it out;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\n/**\n * Class MyEntity\n *\n * @property-read int       $id\n * @property string         $name\n * @property string         $description\n * @property \\Carbon\\Carbon $createdAt\n * @property \\Carbon\\Carbon $updatedAt\n *\n * @package App\\Entities\n */\nclass MyEntity extends Entity {\n}\n\n\n\n\nAttributes\n\n\nThere are several ways for you to interact with your entities attributes.\n\n\nMagic Properties\n\n\nBy default, all attributes are available as magic properties, so you don't need to do anything special to get them working.\n\n\nInternally, the code handling magic properties will hook into any getters and or setters you happen to create.\n\n\nGetters \n Setters\n\n\nIf you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with \nget\n or \nset\n, like below;\n\n\npublic function getName(): string {\n    return $this-\ngetAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this-\nsetAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this-\ngetAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this-\nsetAttribute('created_at', $createdAt);\n}\n\n\n\n\nIf you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the\n\nget\n and \nset\n methods like so;\n\n\n$entity-\nget('name');\n$entity-\nset('name', $name);\n$entity-\nget('created_at');\n$entity-\nset('created_at', $createdAt);\n\n\n\n\nThis methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.\n\n\nManual\n\n\nIf you wish to manually set or get an attribute, skipping and getters or setters, you can use the \ngetAttribute\n and \nsetAttribute\n\nmethods like so;\n\n\n$entity-\ngetAttribute('name');\n$entity-\nsetAttribute('name', $name);\n$entity-\ngetAttribute('created_at');\n$entity-\nsetAttribute('created_at', $createdAt);\n\n\n\n\nDynamic \n Computed Attributes\n\n\nIn theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the \nmapper\n (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.\n\n\nDynamic Attributes\n\n\nDynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the \nsetDynamic()\n\nmethod on the attribute mapping.\n\n\nComputed Attributes\n\n\nComputed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with \ntitle\n, \nfirst_name\n and \nlast_name\n attributes, you could add the following getter;\n\n\npublic function getName(): string {\n    return $this-\ntitle . ' ' . $this-\nfirst_name . ' ' . $this-\nlast_name;\n}\n\n\n\n\nNow you could call \n$entity-\ngetName()\n or event \n$entity-\nname\n rather than having to build up the name from its parts manually.", 
+            "location": "/guides/getting-started/", 
+            "text": "", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/breakdown/entities/", 
+            "text": "Entities could be considered Articulates answer to models, but in essence, they're nothing more than simple data objects.\nEach entity represents a resource, and contains a particular part of a dataset.\n\n\nAll of Articulates entities extend the following class;\n\n\nSprocketbox\\Articulate\\Entities\\Entity\n\n\n\nThis class by default provides attribute handling, as well as a few magic methods so that your data can be accessed\nas entity properties. A fully functioning example entity would be as follows;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\nclass MyEntity extends Entity {\n}\n\n\n\n\nAll of the attributes are provided by the \nmapper\n and generated \nmapping\n so nothing more is needed.\nSince most IDEs have problems with magic properties, it is always worth adding a docblock to help it out;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\n/**\n * Class MyEntity\n *\n * @property-read int       $id\n * @property string         $name\n * @property string         $description\n * @property \\Carbon\\Carbon $createdAt\n * @property \\Carbon\\Carbon $updatedAt\n *\n * @package App\\Entities\n */\nclass MyEntity extends Entity {\n}\n\n\n\n\nAttributes\n\n\nThere are several ways for you to interact with your entities attributes.\n\n\nMagic Properties\n\n\nBy default, all attributes are available as magic properties, so you don't need to do anything special to get them working.\n\n\nInternally, the code handling magic properties will hook into any getters and or setters you happen to create.\n\n\nGetters \n Setters\n\n\nIf you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with \nget\n or \nset\n, like below;\n\n\npublic function getName(): string {\n    return $this-\ngetAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this-\nsetAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this-\ngetAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this-\nsetAttribute('created_at', $createdAt);\n}\n\n\n\n\nIf you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the\n\nget\n and \nset\n methods like so;\n\n\n$entity-\nget('name');\n$entity-\nset('name', $name);\n$entity-\nget('created_at');\n$entity-\nset('created_at', $createdAt);\n\n\n\n\nThis methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.\n\n\nManual\n\n\nIf you wish to manually set or get an attribute, skipping and getters or setters, you can use the \ngetAttribute\n and \nsetAttribute\n\nmethods like so;\n\n\n$entity-\ngetAttribute('name');\n$entity-\nsetAttribute('name', $name);\n$entity-\ngetAttribute('created_at');\n$entity-\nsetAttribute('created_at', $createdAt);\n\n\n\n\nDynamic \n Computed Attributes\n\n\nIn theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the \nmapper\n (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.\n\n\nDynamic Attributes\n\n\nDynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the \nsetDynamic()\n\nmethod on the attribute mapping.\n\n\nComputed Attributes\n\n\nComputed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with \ntitle\n, \nfirst_name\n and \nlast_name\n attributes, you could add the following getter;\n\n\npublic function getName(): string {\n    return $this-\ntitle . ' ' . $this-\nfirst_name . ' ' . $this-\nlast_name;\n}\n\n\n\n\nNow you could call \n$entity-\ngetName()\n or even \n$entity-\nname\n rather than having to build up the name from its parts manually.\n\n\nState\n\n\nAn entity has three states, persisted, not persisted and dirty.\n\n\nPersisted State\n\n\nAll entities have a persisted state, which can be checked by calling \nisPersisted()\n which returns a boolean. If for some reason you wanted\nto set an entity as persisted manually, you could also call \nsetPersisted()\n.\n\n\nAn entity with a persisted state would typically cause a source to update the resource, where as a none\npersisted entity would cause it to create the resource.\n\n\nDirty State\n\n\nEntities store the state of each attribute, so that when you set one, it is marked as dirty. This can be used by the\nsources so that they do not attempt to persist an entity that hasn't changed.\n\n\nYou can check whether an entity is dirty by calling \nisDirty()\n, and check whether a particular attribute is dirty by calling\n\nisDirty('attribute_name')\n, both of which return a boolean.", 
             "title": "Entities"
         }, 
         {
-            "location": "/entities/#attributes", 
+            "location": "/breakdown/entities/#attributes", 
             "text": "There are several ways for you to interact with your entities attributes.", 
             "title": "Attributes"
         }, 
         {
-            "location": "/entities/#magic-properties", 
+            "location": "/breakdown/entities/#magic-properties", 
             "text": "By default, all attributes are available as magic properties, so you don't need to do anything special to get them working.  Internally, the code handling magic properties will hook into any getters and or setters you happen to create.", 
             "title": "Magic Properties"
         }, 
         {
-            "location": "/entities/#getters-setters", 
+            "location": "/breakdown/entities/#getters-setters", 
             "text": "If you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with  get  or  set , like below;  public function getName(): string {\n    return $this- getAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this- setAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this- getAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this- setAttribute('created_at', $createdAt);\n}  If you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the get  and  set  methods like so;  $entity- get('name');\n$entity- set('name', $name);\n$entity- get('created_at');\n$entity- set('created_at', $createdAt);  This methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.", 
             "title": "Getters &amp; Setters"
         }, 
         {
-            "location": "/entities/#manual", 
+            "location": "/breakdown/entities/#manual", 
             "text": "If you wish to manually set or get an attribute, skipping and getters or setters, you can use the  getAttribute  and  setAttribute \nmethods like so;  $entity- getAttribute('name');\n$entity- setAttribute('name', $name);\n$entity- getAttribute('created_at');\n$entity- setAttribute('created_at', $createdAt);", 
             "title": "Manual"
         }, 
         {
-            "location": "/entities/#dynamic-computed-attributes", 
+            "location": "/breakdown/entities/#dynamic-computed-attributes", 
             "text": "In theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the  mapper  (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.", 
             "title": "Dynamic &amp; Computed Attributes"
         }, 
         {
-            "location": "/entities/#dynamic-attributes", 
+            "location": "/breakdown/entities/#dynamic-attributes", 
             "text": "Dynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the  setDynamic() \nmethod on the attribute mapping.", 
             "title": "Dynamic Attributes"
         }, 
         {
-            "location": "/entities/#computed-attributes", 
-            "text": "Computed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with  title ,  first_name  and  last_name  attributes, you could add the following getter;  public function getName(): string {\n    return $this- title . ' ' . $this- first_name . ' ' . $this- last_name;\n}  Now you could call  $entity- getName()  or event  $entity- name  rather than having to build up the name from its parts manually.", 
+            "location": "/breakdown/entities/#computed-attributes", 
+            "text": "Computed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with  title ,  first_name  and  last_name  attributes, you could add the following getter;  public function getName(): string {\n    return $this- title . ' ' . $this- first_name . ' ' . $this- last_name;\n}  Now you could call  $entity- getName()  or even  $entity- name  rather than having to build up the name from its parts manually.", 
             "title": "Computed Attributes"
         }, 
         {
-            "location": "/mappers/", 
+            "location": "/breakdown/entities/#state", 
+            "text": "An entity has three states, persisted, not persisted and dirty.", 
+            "title": "State"
+        }, 
+        {
+            "location": "/breakdown/entities/#persisted-state", 
+            "text": "All entities have a persisted state, which can be checked by calling  isPersisted()  which returns a boolean. If for some reason you wanted\nto set an entity as persisted manually, you could also call  setPersisted() .  An entity with a persisted state would typically cause a source to update the resource, where as a none\npersisted entity would cause it to create the resource.", 
+            "title": "Persisted State"
+        }, 
+        {
+            "location": "/breakdown/entities/#dirty-state", 
+            "text": "Entities store the state of each attribute, so that when you set one, it is marked as dirty. This can be used by the\nsources so that they do not attempt to persist an entity that hasn't changed.  You can check whether an entity is dirty by calling  isDirty() , and check whether a particular attribute is dirty by calling isDirty('attribute_name') , both of which return a boolean.", 
+            "title": "Dirty State"
+        }, 
+        {
+            "location": "/breakdown/mappers/", 
             "text": "", 
             "title": "Mappers"
         }, 
         {
-            "location": "/mappings/", 
+            "location": "/breakdown/mappings/", 
             "text": "", 
             "title": "Mappings"
         }, 
         {
-            "location": "/attributes/", 
+            "location": "/breakdown/attributes/", 
             "text": "", 
             "title": "Attributes"
         }, 
         {
-            "location": "/repositories/", 
+            "location": "/breakdown/repositories/", 
             "text": "", 
             "title": "Repostiories"
         }, 
         {
-            "location": "/sources/", 
+            "location": "/breakdown/sources/", 
             "text": "", 
             "title": "Sources"
         }, 
         {
-            "location": "/components/", 
+            "location": "/breakdown/components/", 
             "text": "", 
             "title": "Components"
+        }, 
+        {
+            "location": "/sources/illuminate/", 
+            "text": "The Illuminate source allows for entities to use the default query builder that ships with Laravel as their data source.\n\n\nTo use this source, your entity mapper should return \nilluminate\n as its source, like so;\n\n\npublic function source(): string {\n    return 'illuminate';\n}\n\n\n\n\nMapping\n\n\nEntities that use this source will have the following mapping injected into their mapper;\n\n\nSprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateEntityMapping\n\n\n\nSetting the Table\n\n\nTo set the table of the entity you can call the \nsetTable(string $table)\n method like so;\n\n\n$mapping-\nsetTable('my_entities');\n\n\n\n\nThis is a required setting.\n\n\nSetting the Connection\n\n\nTo set the connection of the entity you can call the \nsetConnection(string $connection)\n method like so;\n\n\n$mapping-\nsetConnection('mysql');\n\n\n\n\nThe value of this method must match up with a defined connection in the \ndatabase.connections\n configuration. If you wish\nto use the default connection defined by \ndatabase.default\n you can skip this.\n\n\nBuilder\n\n\nThe Illuminate builder is a small piece of abstraction that wraps the default query builder. This builder is;\n\n\nSprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateBuilder\n\n\n\nYou can treat this the same way you'd treat the normal query builder, as any methods that are not overwritten are proxied\nthrough to an internal instance of;\n\n\nIlluminate\\Database\\Query\\Builder\n\n\n\nRepositories\n\n\nRepositories for Illuminate entities should extends the following class;\n\n\nSprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateRepository\n\n\n\nQuerying\n\n\nTo create a new instance of the \nbuilder\n you can call the \nquery(?string $entity = null)\n method. This will return a new builder\nset to the table of the entity the repository is currently configured for. Passing in another entities class in here will\ncreate a new instance of the builder for that entity.\n\n\nYou can also create \ncritera\n using the \ngetOneBy(Criteria... $criteria)\n and the \ngetBy(Criteria.. $criteria)\n\nmethods, which will return a hydrated entity and a collection of hydrated entities, respectively.\n\n\nBy default the query builder will not run criteria (outside of the above \ngetOneBy\n and \ngetBy\n methods), so to manually do this you'll\nneed to call \napplyCriteria(Builder $query)\n which return the query so that you can chain.\n\n\nDeleting\n\n\nTo delete an entity, simply pass it into the \ndelete(Entity $entity)\n method.\n\n\nAt the time of writing, soft deletes are not supported natively, but you could override this method and use criteria\nto recreate it.\n\n\nPaginating\n\n\nTo paginate the result of a query, you can pass in a builder instance to \npaginate($query, int $count, string $pageName = 'page')\n.\n\n\nSaving\n\n\nTo save an entity, or persist it to the database, just call \nsave(Entity $entity)\n.", 
+            "title": "Illuminate"
+        }, 
+        {
+            "location": "/sources/illuminate/#mapping", 
+            "text": "Entities that use this source will have the following mapping injected into their mapper;  Sprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateEntityMapping", 
+            "title": "Mapping"
+        }, 
+        {
+            "location": "/sources/illuminate/#setting-the-table", 
+            "text": "To set the table of the entity you can call the  setTable(string $table)  method like so;  $mapping- setTable('my_entities');  This is a required setting.", 
+            "title": "Setting the Table"
+        }, 
+        {
+            "location": "/sources/illuminate/#setting-the-connection", 
+            "text": "To set the connection of the entity you can call the  setConnection(string $connection)  method like so;  $mapping- setConnection('mysql');  The value of this method must match up with a defined connection in the  database.connections  configuration. If you wish\nto use the default connection defined by  database.default  you can skip this.", 
+            "title": "Setting the Connection"
+        }, 
+        {
+            "location": "/sources/illuminate/#builder", 
+            "text": "The Illuminate builder is a small piece of abstraction that wraps the default query builder. This builder is;  Sprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateBuilder  You can treat this the same way you'd treat the normal query builder, as any methods that are not overwritten are proxied\nthrough to an internal instance of;  Illuminate\\Database\\Query\\Builder", 
+            "title": "Builder"
+        }, 
+        {
+            "location": "/sources/illuminate/#repositories", 
+            "text": "Repositories for Illuminate entities should extends the following class;  Sprocketbox\\Articulate\\Sources\\Illuminate\\IlluminateRepository", 
+            "title": "Repositories"
+        }, 
+        {
+            "location": "/sources/illuminate/#querying", 
+            "text": "To create a new instance of the  builder  you can call the  query(?string $entity = null)  method. This will return a new builder\nset to the table of the entity the repository is currently configured for. Passing in another entities class in here will\ncreate a new instance of the builder for that entity.  You can also create  critera  using the  getOneBy(Criteria... $criteria)  and the  getBy(Criteria.. $criteria) \nmethods, which will return a hydrated entity and a collection of hydrated entities, respectively.  By default the query builder will not run criteria (outside of the above  getOneBy  and  getBy  methods), so to manually do this you'll\nneed to call  applyCriteria(Builder $query)  which return the query so that you can chain.", 
+            "title": "Querying"
+        }, 
+        {
+            "location": "/sources/illuminate/#deleting", 
+            "text": "To delete an entity, simply pass it into the  delete(Entity $entity)  method.  At the time of writing, soft deletes are not supported natively, but you could override this method and use criteria\nto recreate it.", 
+            "title": "Deleting"
+        }, 
+        {
+            "location": "/sources/illuminate/#paginating", 
+            "text": "To paginate the result of a query, you can pass in a builder instance to  paginate($query, int $count, string $pageName = 'page') .", 
+            "title": "Paginating"
+        }, 
+        {
+            "location": "/sources/illuminate/#saving", 
+            "text": "To save an entity, or persist it to the database, just call  save(Entity $entity) .", 
+            "title": "Saving"
+        }, 
+        {
+            "location": "/sources/respite/", 
+            "text": "", 
+            "title": "Respite"
         }
     ]
 }

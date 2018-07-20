@@ -6,42 +6,57 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/setup/</loc>
+     <loc>/guides/setup/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/entities/</loc>
+     <loc>/guides/getting-started/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mappers/</loc>
+     <loc>/breakdown/entities/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mappings/</loc>
+     <loc>/breakdown/mappers/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/attributes/</loc>
+     <loc>/breakdown/mappings/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/repositories/</loc>
+     <loc>/breakdown/attributes/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/sources/</loc>
+     <loc>/breakdown/repositories/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/components/</loc>
+     <loc>/breakdown/sources/</loc>
+     <lastmod>2018-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/breakdown/components/</loc>
+     <lastmod>2018-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/sources/illuminate/</loc>
+     <lastmod>2018-07-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/sources/respite/</loc>
      <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
