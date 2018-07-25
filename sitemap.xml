@@ -2,62 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/guides/setup/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/guides/getting-started/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/entities/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/mappers/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/attributes/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/mappings/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/state/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/attributes/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/inheritance/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/repositories/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/mappers/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/sources/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/mappings/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/breakdown/components/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <loc>/entities/repositories/</loc>
+     <lastmod>2018-07-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/attributes/</loc>
+     <lastmod>2018-07-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/attributes/components/</loc>
+     <lastmod>2018-07-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/sources/</loc>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sources/illuminate/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sources/respite/</loc>
-     <lastmod>2018-07-20</lastmod>
+     <lastmod>2018-07-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

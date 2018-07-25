@@ -71,89 +71,84 @@
             "title": "Getting Started"
         }, 
         {
-            "location": "/breakdown/entities/", 
-            "text": "Entities could be considered Articulates answer to models, but in essence, they're nothing more than simple data objects.\nEach entity represents a resource, and contains a particular part of a dataset.\n\n\nAll of Articulates entities extend the following class;\n\n\nSprocketbox\\Articulate\\Entities\\Entity\n\n\n\nThis class by default provides attribute handling, as well as a few magic methods so that your data can be accessed\nas entity properties. A fully functioning example entity would be as follows;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\nclass MyEntity extends Entity {\n}\n\n\n\n\nAll of the attributes are provided by the \nmapper\n and generated \nmapping\n so nothing more is needed.\nSince most IDEs have problems with magic properties, it is always worth adding a docblock to help it out;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\n/**\n * Class MyEntity\n *\n * @property-read int       $id\n * @property string         $name\n * @property string         $description\n * @property \\Carbon\\Carbon $createdAt\n * @property \\Carbon\\Carbon $updatedAt\n *\n * @package App\\Entities\n */\nclass MyEntity extends Entity {\n}\n\n\n\n\nAttributes\n\n\nThere are several ways for you to interact with your entities attributes.\n\n\nMagic Properties\n\n\nBy default, all attributes are available as magic properties, so you don't need to do anything special to get them working.\n\n\nInternally, the code handling magic properties will hook into any getters and or setters you happen to create.\n\n\nGetters \n Setters\n\n\nIf you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with \nget\n or \nset\n, like below;\n\n\npublic function getName(): string {\n    return $this-\ngetAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this-\nsetAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this-\ngetAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this-\nsetAttribute('created_at', $createdAt);\n}\n\n\n\n\nIf you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the\n\nget\n and \nset\n methods like so;\n\n\n$entity-\nget('name');\n$entity-\nset('name', $name);\n$entity-\nget('created_at');\n$entity-\nset('created_at', $createdAt);\n\n\n\n\nThis methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.\n\n\nManual\n\n\nIf you wish to manually set or get an attribute, skipping and getters or setters, you can use the \ngetAttribute\n and \nsetAttribute\n\nmethods like so;\n\n\n$entity-\ngetAttribute('name');\n$entity-\nsetAttribute('name', $name);\n$entity-\ngetAttribute('created_at');\n$entity-\nsetAttribute('created_at', $createdAt);\n\n\n\n\nDynamic \n Computed Attributes\n\n\nIn theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the \nmapper\n (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.\n\n\nDynamic Attributes\n\n\nDynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the \nsetDynamic()\n\nmethod on the attribute mapping.\n\n\nComputed Attributes\n\n\nComputed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with \ntitle\n, \nfirst_name\n and \nlast_name\n attributes, you could add the following getter;\n\n\npublic function getName(): string {\n    return $this-\ntitle . ' ' . $this-\nfirst_name . ' ' . $this-\nlast_name;\n}\n\n\n\n\nNow you could call \n$entity-\ngetName()\n or even \n$entity-\nname\n rather than having to build up the name from its parts manually.\n\n\nState\n\n\nAn entity has three states, persisted, not persisted and dirty.\n\n\nPersisted State\n\n\nAll entities have a persisted state, which can be checked by calling \nisPersisted()\n which returns a boolean. If for some reason you wanted\nto set an entity as persisted manually, you could also call \nsetPersisted()\n.\n\n\nAn entity with a persisted state would typically cause a source to update the resource, where as a none\npersisted entity would cause it to create the resource.\n\n\nDirty State\n\n\nEntities store the state of each attribute, so that when you set one, it is marked as dirty. This can be used by the\nsources so that they do not attempt to persist an entity that hasn't changed.\n\n\nYou can check whether an entity is dirty by calling \nisDirty()\n, and check whether a particular attribute is dirty by calling\n\nisDirty('attribute_name')\n, both of which return a boolean.", 
-            "title": "Entities"
+            "location": "/entities/", 
+            "text": "Entities could be considered Articulates answer to models, but in essence, they're nothing more than simple data objects.\nEach entity represents a resource, and contains a particular part of a dataset.\n\n\nAll of Articulates entities extend the following class;\n\n\nSprocketbox\\Articulate\\Entities\\Entity\n\n\n\nThis class by default provides attribute handling, as well as a few magic methods so that your data can be accessed\nas entity properties. A fully functioning example entity would be as follows;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\nclass MyEntity extends Entity {\n}\n\n\n\n\nAll of the attributes are provided by the \nmapper\n and generated \nmapping\n so nothing more is needed.\nSince most IDEs have problems with magic properties, it is always worth adding a docblock to help it out;\n\n\nnamespace App\\Entities;\n\nuse Sprocketbox\\Articulate\\Entities\\Entity;\n\n/**\n * Class MyEntity\n *\n * @property-read int       $id\n * @property string         $name\n * @property string         $description\n * @property \\Carbon\\Carbon $createdAt\n * @property \\Carbon\\Carbon $updatedAt\n *\n * @package App\\Entities\n */\nclass MyEntity extends Entity {\n}", 
+            "title": "Introduction"
         }, 
         {
-            "location": "/breakdown/entities/#attributes", 
-            "text": "There are several ways for you to interact with your entities attributes.", 
+            "location": "/entities/attributes/", 
+            "text": "There are several ways for you to interact with your entities attributes.\n\n\nMagic Properties\n\n\nBy default, all attributes are available as magic properties, so you don't need to do anything special to get them working.\n\n\nInternally, the code handling magic properties will hook into any getters and or setters you happen to create.\n\n\nGetters \n Setters\n\n\nIf you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with \nget\n or \nset\n, like below;\n\n\npublic function getName(): string {\n    return $this-\ngetAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this-\nsetAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this-\ngetAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this-\nsetAttribute('created_at', $createdAt);\n}\n\n\n\n\nIf you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the\n\nget\n and \nset\n methods like so;\n\n\n$entity-\nget('name');\n$entity-\nset('name', $name);\n$entity-\nget('created_at');\n$entity-\nset('created_at', $createdAt);\n\n\n\n\nThis methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.\n\n\nManual\n\n\nIf you wish to manually set or get an attribute, skipping and getters or setters, you can use the \ngetAttribute\n and \nsetAttribute\n\nmethods like so;\n\n\n$entity-\ngetAttribute('name');\n$entity-\nsetAttribute('name', $name);\n$entity-\ngetAttribute('created_at');\n$entity-\nsetAttribute('created_at', $createdAt);\n\n\n\n\nDynamic \n Computed\n\n\nIn theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the \nmapper\n (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.\n\n\nDynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the \nsetDynamic()\n\nmethod on the attribute mapping.\n\n\nComputed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with \ntitle\n, \nfirst_name\n and \nlast_name\n attributes, you could add the following getter;\n\n\npublic function getName(): string {\n    return $this-\ntitle . ' ' . $this-\nfirst_name . ' ' . $this-\nlast_name;\n}\n\n\n\n\nNow you could call \n$entity-\ngetName()\n or even \n$entity-\nname\n rather than having to build up the name from its parts manually.", 
             "title": "Attributes"
         }, 
         {
-            "location": "/breakdown/entities/#magic-properties", 
+            "location": "/entities/attributes/#magic-properties", 
             "text": "By default, all attributes are available as magic properties, so you don't need to do anything special to get them working.  Internally, the code handling magic properties will hook into any getters and or setters you happen to create.", 
             "title": "Magic Properties"
         }, 
         {
-            "location": "/breakdown/entities/#getters-setters", 
+            "location": "/entities/attributes/#getters-setters", 
             "text": "If you wish to create getters or setters for particular attributes, you can do so by StudlyCasing the attribute names, and\nprefixed with  get  or  set , like below;  public function getName(): string {\n    return $this- getAttribute('name');\n}\n\npublic function setName(string $name): self {\n    return $this- setAttribute('name', $name);\n}\n\npublic function getCreatedAt(): Carbon {\n    return $this- getAttribute('created_at');\n}\n\npublic function setCreatedAt(Carbon $createdAt): self {\n    return $this- setAttribute('created_at', $createdAt);\n}  If you wish to get or set an attribute on entity, but don't want to actually call the getter or setter, you can use the get  and  set  methods like so;  $entity- get('name');\n$entity- set('name', $name);\n$entity- get('created_at');\n$entity- set('created_at', $createdAt);  This methods will check for the existence of getter and/or setter, before defaulting the next method. It is important to not use\nthese methods inside your getters and setters, otherwise you'll create an nice little infinite loop.", 
             "title": "Getters &amp; Setters"
         }, 
         {
-            "location": "/breakdown/entities/#manual", 
+            "location": "/entities/attributes/#manual", 
             "text": "If you wish to manually set or get an attribute, skipping and getters or setters, you can use the  getAttribute  and  setAttribute \nmethods like so;  $entity- getAttribute('name');\n$entity- setAttribute('name', $name);\n$entity- getAttribute('created_at');\n$entity- setAttribute('created_at', $createdAt);", 
             "title": "Manual"
         }, 
         {
-            "location": "/breakdown/entities/#dynamic-computed-attributes", 
-            "text": "In theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the  mapper  (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.", 
-            "title": "Dynamic &amp; Computed Attributes"
+            "location": "/entities/attributes/#dynamic-computed", 
+            "text": "In theory, once you have an instance of entity, you can get and set as many attributes as you wish, though only those mapped\nvia the  mapper  (and of those, only those that aren't marked as dynamic or immutable) will be persisted to the data source.  Dynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the  setDynamic() \nmethod on the attribute mapping.  Computed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with  title ,  first_name  and  last_name  attributes, you could add the following getter;  public function getName(): string {\n    return $this- title . ' ' . $this- first_name . ' ' . $this- last_name;\n}  Now you could call  $entity- getName()  or even  $entity- name  rather than having to build up the name from its parts manually.", 
+            "title": "Dynamic &amp; Computed"
         }, 
         {
-            "location": "/breakdown/entities/#dynamic-attributes", 
-            "text": "Dynamic attributes can either be set without a mapping, or if you wish to make use of attribute casting, you can use the  setDynamic() \nmethod on the attribute mapping.", 
-            "title": "Dynamic Attributes"
-        }, 
-        {
-            "location": "/breakdown/entities/#computed-attributes", 
-            "text": "Computed attributes aren't entirely that different to dynamic, except that they will typically return a value using one or more\nof the existing attributes. If you had an entity with  title ,  first_name  and  last_name  attributes, you could add the following getter;  public function getName(): string {\n    return $this- title . ' ' . $this- first_name . ' ' . $this- last_name;\n}  Now you could call  $entity- getName()  or even  $entity- name  rather than having to build up the name from its parts manually.", 
-            "title": "Computed Attributes"
-        }, 
-        {
-            "location": "/breakdown/entities/#state", 
-            "text": "An entity has three states, persisted, not persisted and dirty.", 
+            "location": "/entities/state/", 
+            "text": "An entity has two states, persisted, and dirty.\n\n\nPersisted State\n\n\nAll entities have a persisted state, which can be checked by calling \nisPersisted()\n which returns a boolean. If for some reason you wanted\nto set an entity as persisted manually, you could also call \nsetPersisted()\n.\n\n\nAn entity with a persisted state would typically cause a source to update the resource, where as a none\npersisted entity would cause it to create the resource.\n\n\nDirty State\n\n\nEntities store the state of each attribute, so that when you set one, it is marked as dirty. This can be used by the\nsources so that they do not attempt to persist an entity that hasn't changed.\n\n\nYou can check whether an entity is dirty by calling \nisDirty()\n, and check whether a particular attribute is dirty by calling\n\nisDirty('attribute_name')\n, both of which return a boolean.", 
             "title": "State"
         }, 
         {
-            "location": "/breakdown/entities/#persisted-state", 
+            "location": "/entities/state/#persisted-state", 
             "text": "All entities have a persisted state, which can be checked by calling  isPersisted()  which returns a boolean. If for some reason you wanted\nto set an entity as persisted manually, you could also call  setPersisted() .  An entity with a persisted state would typically cause a source to update the resource, where as a none\npersisted entity would cause it to create the resource.", 
             "title": "Persisted State"
         }, 
         {
-            "location": "/breakdown/entities/#dirty-state", 
+            "location": "/entities/state/#dirty-state", 
             "text": "Entities store the state of each attribute, so that when you set one, it is marked as dirty. This can be used by the\nsources so that they do not attempt to persist an entity that hasn't changed.  You can check whether an entity is dirty by calling  isDirty() , and check whether a particular attribute is dirty by calling isDirty('attribute_name') , both of which return a boolean.", 
             "title": "Dirty State"
         }, 
         {
-            "location": "/breakdown/mappers/", 
+            "location": "/entities/inheritance/", 
+            "text": "There may be cases where you have multiple types of an entity, all defined by a single dataset. For example, you may have\na \ntype\n column, and depending on the value of this column a certain subset of available data may be returned.\n\n\nSince Articulate is datasource agnostic there isn't the concept of Single Table Inheritance or Multiple Table Inheritance, \nbut simply Multiple Inheritance. This is performed by providing a logical case in your entities mapper, and mapping\ncertain attributes to only be available for child entities.\n\n\nAll child entities should extend your parent entity, which is the entity that the mapper specifies. Outside of extending\nthe parent entity, all multiple inheritance is defined and controlled by the \nmapper", 
+            "title": "Multiple Inheritance"
+        }, 
+        {
+            "location": "/entities/mappers/", 
             "text": "", 
             "title": "Mappers"
         }, 
         {
-            "location": "/breakdown/mappings/", 
+            "location": "/entities/mappings/", 
             "text": "", 
             "title": "Mappings"
         }, 
         {
-            "location": "/breakdown/attributes/", 
+            "location": "/entities/repositories/", 
             "text": "", 
-            "title": "Attributes"
+            "title": "Repositories"
         }, 
         {
-            "location": "/breakdown/repositories/", 
+            "location": "/attributes/", 
             "text": "", 
-            "title": "Repostiories"
+            "title": "Introduction"
         }, 
         {
-            "location": "/breakdown/sources/", 
-            "text": "", 
-            "title": "Sources"
-        }, 
-        {
-            "location": "/breakdown/components/", 
+            "location": "/attributes/components/", 
             "text": "", 
             "title": "Components"
+        }, 
+        {
+            "location": "/sources/", 
+            "text": "", 
+            "title": "Introduction"
         }, 
         {
             "location": "/sources/illuminate/", 
